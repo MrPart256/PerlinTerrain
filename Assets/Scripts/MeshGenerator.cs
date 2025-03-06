@@ -12,11 +12,20 @@ public class MeshGenerator : MonoBehaviour
     [SerializeField] private float _sizeX = 5;
     [SerializeField] private float _sizeY = 5;
 
+    [SerializeField] private Vector2[] _octaveOffsets;
+    
     private void Start()
     {
         _meshFilter.mesh = new();
 
         UpdateMesh(5, 1, 1, 1, 1, new EmptyFunction());
+
+        for (int i = 0; i < _octaveOffsets.Length; i++)
+        {
+            var offset = _octaveOffsets[i];
+            offset.x += Random.Range(-100f, 100f);
+            offset.y += Random.Range(-100f, 100f);
+        }
     }
 
     /// <summary>
@@ -39,9 +48,7 @@ public class MeshGenerator : MonoBehaviour
         var yStep = _sizeY / subdivisions;
 
         Random.InitState((int)DateTime.Now.Ticks);
-
-        Vector2 offset = Vector2.one * Random.Range(-100f, 100f);
-
+        
         for (int x = 0; x <= subdivisions; x++)
         {
             for (int y = 0; y <= subdivisions; y++)
@@ -51,6 +58,7 @@ public class MeshGenerator : MonoBehaviour
                 float noiseHeight = 0;
                 for (int i = 0; i < octaves; i++)
                 {
+                    var offset = _octaveOffsets[i];
                     var xPos = x * noiseScale * frequency + offset.x;
                     var yPos = y * noiseScale * frequency + offset.y;
 

@@ -852,6 +852,11 @@ MonoBehaviour:
   _meshRenderer: {fileID: 288383302}
   _sizeX: 15
   _sizeY: 15
+  _octaveOffsets:
+  - {x: 0.1, y: -0.1}
+  - {x: 12, y: 31}
+  - {x: -3, y: 1}
+  - {x: 10, y: -15}
 --- !u!23 &288383302
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2557,7 +2562,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1929747590}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 16
+  m_MaxValue: 4
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -4418,8 +4423,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1167971808}
   m_HandleRect: {fileID: 197659297}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 3
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
